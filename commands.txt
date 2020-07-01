@@ -5,3 +5,12 @@ PUT /quotes
 
 // List indexes
 GET _cat/indices?v
+
+// Creating index with shards
+PUT /quotes
+{
+    "settings" : {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    }
+}
