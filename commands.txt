@@ -1,0 +1,7 @@
+// Commands to run in Kibana DevTools
+
+// Create index
+PUT /quotes
+
+// List indexes
+GET _cat/indices?v
