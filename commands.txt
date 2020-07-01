@@ -44,4 +44,27 @@ PUT /quotes/_mapping
   }
 }
 
+// Add changed mapping
+PUT /quotes_new
+{
+  "mappings" : {
+    "properties": {
+       "author" : { "type" : "keyword" },
+       "content" : { "type" : "text" },
+        "year" : { "type" : "integer" }
+    }
+  }
+}
+
+// Reindexing
+POST /_reindex
+{
+  "source": {
+    "index": "quotes"
+  },
+  "dest": {
+    "index": "quotes_new"
+  }
+}
+
 
