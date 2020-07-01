@@ -67,4 +67,21 @@ POST /_reindex
   }
 }
 
+// Insert data
+POST /quotes/_doc
+{
+  "author": "Beverly Sills",
+  "content": "You may be disappointed if you fail, but you are doomed if you don’t try.",
+  "year": 1929
+}
+
+// Update data (id is from previous response)
+PUT quotes/_doc/GQLJC3MBm1kksFStNZwg
+{
+  "author" : "Farrah Gray",
+  "content" : "Build your own dreams, or someone else will hire you to build theirs.",
+  "year" : 1984,
+  "country": "USA"
+} 
+
 
