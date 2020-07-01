@@ -6,7 +6,7 @@ PUT /quotes
 // List indexes
 GET _cat/indices?v
 
-// Creating index with shards
+// Create index with shards
 PUT /quotes
 {
     "settings" : {
@@ -14,3 +14,34 @@ PUT /quotes
         "number_of_replicas" : 2
     }
 }
+
+// Update number of shards in existing index
+PUT /quotes/_settings
+{
+    "index" : {
+        "number_of_replicas" : 2
+    }
+}
+
+// Recreate index
+DELETE /quotes
+
+PUT /quotes
+{
+    "settings" : {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    }
+}
+
+// Add mapping
+PUT /quotes/_mapping
+{
+  "properties" : {
+      "author" : { "type" : "text" },
+      "content" : { "type" : "text" },
+      "year" : { "type" : "integer" }
+  }
+}
+
+
