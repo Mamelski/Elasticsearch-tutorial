@@ -136,7 +136,8 @@ GET /quotes/_search
   , "size": 2
 }
 
-// Score exampleGET /quotes/_search
+// Score example
+GET /quotes/_search
 {
   "query": {
     "bool": {
