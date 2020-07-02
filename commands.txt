@@ -101,3 +101,37 @@ GET /quotes/_search
     }
   }
 }
+
+// Show only authors, books with dreams and before 1985
+GET /quotes/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "year": {
+              "lte": 1985
+            }
+          }
+        },
+        {
+          "match": {
+            "content": "dreams"
+          }
+        }
+      ]
+    }
+  }
+  , "_source": "author"
+}
+
+// Pagination example
+GET /quotes/_search
+{
+  "query": {
+    "match_all": {}
+  }
+  , "from": 0
+  , "size": 2
+}
