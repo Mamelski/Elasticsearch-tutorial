@@ -84,4 +84,20 @@ PUT quotes/_doc/GQLJC3MBm1kksFStNZwg
   "country": "USA"
 } 
 
+// Query all
+GET /quotes/_search
+{
+    "query": {
+        "match_all": { }
+    }
+}
 
+// Search word in content
+GET /quotes/_search
+{
+  "query": {
+    "match": {
+      "content": "dreams"
+    }
+  }
+}
