@@ -135,3 +135,39 @@ GET /quotes/_search
   , "from": 0
   , "size": 2
 }
+
+// Score exampleGET /quotes/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": 
+          { "content": "not to be a success" } }
+       ]
+    }
+  }
+}
+
+// Filter example
+GET quotes/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "match": {
+            "author": "Albert"
+          }
+        },
+        {
+          "range":{
+            "year":{
+              "gte":1800,
+              "lte":1900
+            }
+          }
+        }
+      ]
+    }
+  }
+}
